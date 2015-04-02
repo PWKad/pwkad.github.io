@@ -1,6 +1,5 @@
 export class API {
   constructor(obj){
-    console.log(obj.name)
     this.name = obj.name;
     this.description = obj.description;
     this.classes = [];
@@ -22,22 +21,8 @@ export class API {
   }
 }
 
-// export class Module {
-//   constructor(moduleName, props){
-//     this.name = moduleName;
-//     this.description = props.description;
-//     this.classes = [];
-//     this.namespaces = [];
-//     this.submodules = [];
-//     this.tag = props.tag;
-//     this.properties = props;
-//     this.visible = false;
-//   }
-// }
-
 export class Class {
   constructor(obj) {
-    console.log(obj)
     this.name = obj.name;
     this.file = obj.file;
     this.line = obj.line;
@@ -46,7 +31,6 @@ export class Class {
     this.properties = [];
     this.events = [];
     this.isConstructor = obj.is_constructor;
-    console.log(obj.methods)
     for (var child of obj.methods) {
       this.methods.push(new Method(child));
     }

@@ -2,70 +2,88 @@
   <require from="./resources/markdown"></require>
 
   <section class="container">
-    <h2>${ api.name }</h2>
-    <h4>${ api.description }</h4>
-    <ul class="list-unstyled">
-      <li repeat.for="class of api.classes">
-        <h4 class="toggle" click.delegate="$parent.toggleVisible(class)">
-          <i class="fa fa-chevron-${ class.visible ? 'down' : 'right' }"></i>
-          ${class.name} - <small>${class.file}: ${class.line}</small>
-        </h4>
-        <p>${class.description}</p>
-        <blockquote class="row" show.bind="class.visible">
-          <div class="col-xs-4">
-            <strong>Methods</strong>
-            <ul class="list-unstyled">
-              <li repeat.for="method of class.methods">
-                <h5 class="toggle" click.delegate="$parent.$parent.toggleVisible(method)">
-                  <i class="fa fa-chevron-${ method.visible ? 'down' : 'right' }"></i>
-                  ${method.name} - <small class="pull-right">line: ${method.line}</small>
-                </h5>
-                <div class="row" show.bind="method.visible">
-                  <blockquote class="col-xs-11 col-xs-offset-1">
-                    <p>${method.description}</p>
-                    <strong>Parameters</strong>
-                    <ul class="list-unstyled">
-                      <li repeat.for="param of method.params">
-                        <h6>${param.name}</h6>
-                        <p>${param.description}</p>
-                        <p>${param.type}</p>
-                      </li>
-                      <li show.bind="method.params.length === 0">
-                        <em>No parameters</em>
-                      </li>
-                    </ul>
-                  </blockquote>
-                </div>
-              </li>
-              <li show.bind="class.methods.length === 0">
-                <em>No methods</em>
-              </li>
-            </ul>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="row pad-top">
+          <h3>API Search</h3>
+          <input value.bind="searchText" class="${ searchChanges ? 'border-red' : '' }" placeholder="search..." />
+        </div>
+        <div class="row">
+          <a class="col-xs-12 toggle" repeat.for="registry of computedRegistries" href.bind="$parent.getRegistryHref(registry)">
+            ${registry.name} - ${registry.type}
+          </a>
+          <div class="col-xs-12" show.bind="computedRegistries.length === 0">
+            <em>No parameters</em>
           </div>
-          <div class="col-xs-4">
-            <strong>Properties</strong>
-            <ul>
-              <li repeat.for="prop of class.properties">
-                <h5>${prop.name}</h5>
-              </li>
-              <li show.bind="class.properties.length === 0">
-                <em>No properties</em>
-              </li>
-            </ul>
-          </div>
-          <div class="col-xs-4">
-            <strong>Events</strong>
-            <ul>
-              <li repeat.for="event of class.events">
-                <h5>${event.name}</h5>
-              </li>
-              <li show.bind="class.events.length === 0">
-                <em>No events</em>
-              </li>
-            </ul>
-          </div>
-        </blockquote>
-      </li>
-    </ul>
+        </div>
+      </div>
+      <div class="col-xs-9">
+        <h2>${ api.name }</h2>
+        <h4>${ api.description }</h4>
+        <ul class="list-unstyled">
+          <li repeat.for="class of api.classes">
+            <h4 class="toggle" click.delegate="$parent.toggleVisible(class)">
+              <i class="fa fa-chevron-${ class.visible ? 'down' : 'right' }"></i>
+              ${class.name} - <small>${class.file}: ${class.line}</small>
+            </h4>
+            <p>${class.description}</p>
+            <blockquote class="row" show.bind="class.visible">
+              <div class="col-xs-4">
+                <strong>Methods</strong>
+                <ul class="list-unstyled">
+                  <li repeat.for="method of class.methods">
+                    <h5 class="toggle" click.delegate="$parent.$parent.toggleVisible(method)">
+                      <i class="fa fa-chevron-${ method.visible ? 'down' : 'right' }"></i>
+                      ${method.name} - <small class="pull-right">line: ${method.line}</small>
+                    </h5>
+                    <div class="row" show.bind="method.visible">
+                      <blockquote class="col-xs-11 col-xs-offset-1">
+                        <p>${method.description}</p>
+                        <strong>Parameters</strong>
+                        <ul class="list-unstyled">
+                          <li repeat.for="param of method.params">
+                            <h6>${param.name}</h6>
+                            <p>${param.description}</p>
+                            <p>${param.type}</p>
+                          </li>
+                          <li show.bind="method.params.length === 0">
+                            <em>No parameters</em>
+                          </li>
+                        </ul>
+                      </blockquote>
+                    </div>
+                  </li>
+                  <li show.bind="class.methods.length === 0">
+                    <em>No methods</em>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-4">
+                <strong>Properties</strong>
+                <ul>
+                  <li repeat.for="prop of class.properties">
+                    <h5>${prop.name}</h5>
+                  </li>
+                  <li show.bind="class.properties.length === 0">
+                    <em>No properties</em>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-4">
+                <strong>Events</strong>
+                <ul>
+                  <li repeat.for="event of class.events">
+                    <h5>${event.name}</h5>
+                  </li>
+                  <li show.bind="class.events.length === 0">
+                    <em>No events</em>
+                  </li>
+                </ul>
+              </div>
+            </blockquote>
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
 </template>
