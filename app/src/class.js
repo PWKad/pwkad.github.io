@@ -15,6 +15,8 @@ export class Class {
 
   activate(classId) {
     var self = this;
-    self.classItem = this.datacontext.getEntityById('Class', classId.id, false);
+    this.datacontext.getEntityById('Class', classId.id, false).then(resp => {
+      self.classItem = resp;
+    });
   }
 }

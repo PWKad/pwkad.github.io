@@ -14,6 +14,8 @@ export class Method {
   }
   activate(methodId) {
     var self = this;
-    self.method = this.datacontext.getEntityById('Method', methodId.id, false);
+    this.datacontext.getEntityById('Method', methodId.id, false).then(resp => {
+      self.method = resp;
+    });
   }
 }

@@ -65,7 +65,6 @@ class DataContext {
     return self.getEntityService.getEntityList(self.manager, type, forceRemote, path).then(queryCompleted);
 
     function queryCompleted(data){
-      console.log(data);
       self.loadingData = false;
       return  data;
     }
@@ -73,7 +72,6 @@ class DataContext {
   getEntityById(type, id, forceRemote){
     var self = this;
     var path = self.servicesConfig.buildURI(REPO, VERSION, LOCAL_PATH)
-    console.log(id);
     return self.getEntityService.getEntityById(self.manager, type, id, forceRemote, path);
   }
   createEntity(type, params){
