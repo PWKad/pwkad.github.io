@@ -1,5 +1,3 @@
-import {HttpClient} from 'aurelia-http-client';
-
 class RegistryList {
   static inject() { return []; }
   constructor(){
@@ -9,47 +7,32 @@ class RegistryList {
 
   addToRegistry(list, type, parent){
     var self = this;
+    var parentName = (parent && parent.name) ? parent.name : parent;
     list.forEach(function (obj) {
-      self.registries.push(new Registry(obj, type, parent));
+      self.registries.push(self.datacontext.createEntity('Registry', { id: obj.id, name: obj.name, type: type, parent: parentName }));
     });
   }
 
-  createRegistry(api){
+  createRegistry(datacontext, repo){
     var self = this;
-    let property = 'property';
-    let repo = 'repo';
-    let event = 'event';
-    let method = 'method';
+    let Property = 'Property';
+    let Repository = 'Repository';
+    let Event = 'Event';
+    let Method = 'Method';
+    this.datacontext = datacontext;
+    self.registries.push(this.datacontext.createEntity('Registry', { id: repo.id, name: repo.name, type: Repository, parent: 'aurelia' }));
 
-    self.registries.push(new Registry(api, repo, 'repo'));
-
-    self.addToRegistry(api.classes, 'class', api);
-    api.classes.forEach(function (object) {
-      self.addToRegistry(object.properties, property, object);
-      self.addToRegistry(object.methods, method, object);
-      self.addToRegistry(object.events, event, object);
+    self.addToRegistry(repo.classes, 'Class', repo);
+    repo.classes.forEach(function (object) {
+      self.addToRegistry(object.properties, Property, object);
+      self.addToRegistry(object.methods, Method, object);
+      self.addToRegistry(object.events, Event, object);
     });
-    self.addToRegistry(api.properties, property, api);
-    self.addToRegistry(api.methods, method, api);
-    self.addToRegistry(api.events, event, api);
-  }
-
-}
-
-class Registry {
-  constructor(data, type, parent){
-    this.name = data.name;
-    this.type = type;
-    this.parentName = '';
-    if (parent && parent.name) {
-      this.parentName = parent.name;
-      this.tag = this.name;
-    } else {
-      this.tag = this.name + '#' + this.parentName;
-    }
+    self.addToRegistry(repo.properties, Property, repo);
+    self.addToRegistry(repo.methods, Method, repo);
+    self.addToRegistry(repo.events, Event, repo);
   }
 }
-
 
 export {
   RegistryList

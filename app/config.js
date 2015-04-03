@@ -10,11 +10,13 @@ System.config({
 System.config({
   "map": {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.10.0",
+    "aurelia-breeze": "github:jdanyow/aurelia-breeze@1.3.0",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.5.1",
     "aurelia-framework": "github:aurelia/framework@0.9.0",
     "aurelia-http-client": "github:aurelia/http-client@0.6.1",
     "aurelia-router": "github:aurelia/router@0.6.0",
     "bootstrap": "github:twbs/bootstrap@3.3.2",
+    "breeze": "npm:breeze-client@1.5.4",
     "commonmark": "npm:commonmark@0.18.1",
     "font-awesome": "npm:font-awesome@4.3.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
@@ -107,6 +109,11 @@ System.config({
       "aurelia-path": "github:aurelia/path@0.4.6",
       "aurelia-task-queue": "github:aurelia/task-queue@0.2.5",
       "core-js": "npm:core-js@0.4.10"
+    },
+    "github:jdanyow/aurelia-breeze@1.3.0": {
+      "aurelia-binding": "github:aurelia/binding@0.4.1",
+      "aurelia-http-client": "github:aurelia/http-client@0.6.1",
+      "breeze": "npm:breeze-client@1.5.4"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

@@ -11,11 +11,11 @@ System.register([], function (_export) {
       Session = function Session() {
         _classCallCheck(this, Session);
 
-        this.api = {};
+        this.repository = {};
       };
 
       _export("Session", Session);
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3Nlc3Npb24uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijt1QkFBTSxPQUFPOzs7Ozs7Ozs7QUFBUCxhQUFPLEdBQ0EsU0FEUCxPQUFPLEdBQ0U7OEJBRFQsT0FBTzs7QUFFVCxZQUFJLENBQUMsR0FBRyxHQUFHLEVBQUUsQ0FBQztPQUNmOzt5QkFJRCxPQUFPIiwiZmlsZSI6InNlcnZpY2VzL3Nlc3Npb24uanMiLCJzb3VyY2VSb290IjoiL3NyYy8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzL3Nlc3Npb24uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijt1QkFBTSxPQUFPOzs7Ozs7Ozs7QUFBUCxhQUFPLEdBQ0EsU0FEUCxPQUFPLEdBQ0U7OEJBRFQsT0FBTzs7QUFFVCxZQUFJLENBQUMsVUFBVSxHQUFHLEVBQUUsQ0FBQztPQUN0Qjs7eUJBSUQsT0FBTyIsImZpbGUiOiJzZXJ2aWNlcy9zZXNzaW9uLmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=

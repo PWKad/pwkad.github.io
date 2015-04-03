@@ -1,11 +1,29 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1>${method.name}</h1>
-      <small>${method.description}</small>
+      <div class="col-xs-12">
+        <h1>${method.name} <small>#method</small></h1>
+        <strong>${method.description}</strong>
+      </div>
     </div>
     <div class="row">
       <p><strong>Location: </strong>${method.line}</p>
+    </div>
+    <div class="row">
+      <blockquote class="col-xs-11">
+        <p>${method.description}</p>
+        <strong>Parameters</strong>
+        <ul class="list-unstyled">
+          <li repeat.for="param of method.params">
+            <h6>${param.name}</h6>
+            <p>${param.description}</p>
+            <p>${param.type}</p>
+          </li>
+          <li show.bind="method.params.length === 0">
+            <em>No parameters</em>
+          </li>
+        </ul>
+      </blockquote>
     </div>
   </div>
 </template>

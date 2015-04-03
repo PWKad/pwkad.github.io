@@ -1,21 +1,20 @@
 import {RegistryList} from './services/registry';
 import {Session} from './services/session';
+import {DataContext} from './services/datacontext';
 
 export class Class {
-  static inject() { return [RegistryList, Session]; }
-  constructor(regList, session) {
+  static inject() { return [RegistryList, Session, DataContext]; }
+  constructor(regList, session, datacontext) {
     this.registry = regList;
     this.session = session;
+    this.datacontext = datacontext;
+  }
+  toggleVisible(value){
+    value.visible = !value.visible;
   }
 
-  activate(objName) {
+  activate(classId) {
     var self = this;
-    var result = self.registry.registries.filter(function (reglist){
-      return reglist.name === objName.id;
-    });
-    self.classItem = result[0];
-    self.classItem = self.session.api.classes.filter(function (obj) {
-      return obj.name === self.classItem.name;
-    })[0];
+    self.classItem = this.datacontext.getEntityById('Class', classId.id, false);
   }
 }

@@ -13,7 +13,7 @@ export class Property {
     var result = self.registry.registries.filter(function (reglist){
       return reglist.name === objName.id;
     })[0];
-    self.property = self.session.api.properties.filter(function (obj) {
+    self.property = self.session.repository.properties.filter(function (obj) {
       return obj.name === result.name;
     })[0];
   }

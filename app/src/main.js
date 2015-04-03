@@ -9,7 +9,8 @@ export function configure(aurelia) {
     .defaultBindingLanguage()
     .defaultResources()
     .router()
-    .eventAggregator();
+    .eventAggregator()
+    .plugin('aurelia-breeze');
 
   var appHost = document.querySelectorAll('[aurelia-app]')[0];
   aurelia.start().then(a => a.setRoot('app', appHost));

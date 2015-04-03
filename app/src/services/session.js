@@ -1,6 +1,6 @@
 class Session {
   constructor(){
-    this.api = {};
+    this.repository = {};
   }
 }
 

@@ -1,5 +1,5 @@
-System.register(["aurelia-router", "bootstrap", "./services/session", "./models/api", "aurelia-http-client", "./services/registry"], function (_export) {
-  var Router, bootstrap, Session, API, HttpClient, RegistryList, _createClass, _classCallCheck, url, App;
+System.register(["aurelia-router", "bootstrap", "./services/session", "./models/api", "aurelia-http-client", "./services/datacontext"], function (_export) {
+  var Router, bootstrap, Session, API, HttpClient, DataContext, _createClass, _classCallCheck, url, App;
 
   return {
     setters: [function (_aureliaRouter) {
@@ -12,8 +12,8 @@ System.register(["aurelia-router", "bootstrap", "./services/session", "./models/
       API = _modelsApi.API;
     }, function (_aureliaHttpClient) {
       HttpClient = _aureliaHttpClient.HttpClient;
-    }, function (_servicesRegistry) {
-      RegistryList = _servicesRegistry.RegistryList;
+    }, function (_servicesDatacontext) {
+      DataContext = _servicesDatacontext.DataContext;
     }],
     execute: function () {
       "use strict";
@@ -24,35 +24,29 @@ System.register(["aurelia-router", "bootstrap", "./services/session", "./models/
 
       url = "doc/0.0.1/api.json";
       App = _export("App", (function () {
-        function App(router, session, http, registryList) {
+        function App(router, session, http, datacontext) {
           _classCallCheck(this, App);
 
           this.router = router;
           this.session = session;
+          this.datacontext = datacontext;
           this.http = http;
-          this.registryList = registryList;
           this.router.configure(function (config) {
             config.title = "Aurelia";
-            config.map([{ route: ["", "docs"], moduleId: "./docs", nav: true, title: "Docs" }, { route: "api", moduleId: "./api", nav: true }, { route: "repo/:id", moduleId: "./repo", nav: false }, { route: "class/:id", moduleId: "./class", nav: false }, { route: "method/:id", moduleId: "./method", nav: false }]);
+            config.map([{ route: ["", "docs"], moduleId: "./docs", nav: true, title: "Docs" }, { route: "API/:id", moduleId: "./api", nav: true }, { route: "Repository/:id", moduleId: "./repository", nav: true }, { route: "Class/:id", moduleId: "./class", nav: false }, { route: "Method/:id", moduleId: "./method", nav: false }]);
           });
         }
 
         _createClass(App, {
           activate: {
             value: function activate() {
-              var _this = this;
-
-              return this.http.get(url).then(function (response) {
-                var json = JSON.parse(response.response);
-                _this.session.api = new API(json);
-                _this.registryList.createRegistry(_this.session.api);
-              });
+              return this.datacontext.primeData();
             }
           }
         }, {
           inject: {
             value: function inject() {
-              return [Router, Session, HttpClient, RegistryList];
+              return [Router, Session, HttpClient, DataContext];
             }
           }
         });
@@ -62,4 +56,4 @@ System.register(["aurelia-router", "bootstrap", "./services/session", "./models/
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,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
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO01BQVEsTUFBTSxFQUNQLFNBQVMsRUFDUixPQUFPLEVBQ1AsR0FBRyxFQUNILFVBQVUsRUFDVixXQUFXLGlDQUVmLEdBQUcsRUFFTSxHQUFHOzs7O0FBVFIsWUFBTSxrQkFBTixNQUFNOztBQUNQLGVBQVM7O0FBQ1IsYUFBTyxvQkFBUCxPQUFPOztBQUNQLFNBQUcsY0FBSCxHQUFHOztBQUNILGdCQUFVLHNCQUFWLFVBQVU7O0FBQ1YsaUJBQVcsd0JBQVgsV0FBVzs7Ozs7Ozs7O0FBRWYsU0FBRyxHQUFHLG9CQUFvQjtBQUVqQixTQUFHO0FBRUgsaUJBRkEsR0FBRyxDQUVGLE1BQU0sRUFBRSxPQUFPLEVBQUUsSUFBSSxFQUFFLFdBQVcsRUFBRTtnQ0FGckMsR0FBRzs7QUFHWixjQUFJLENBQUMsTUFBTSxHQUFHLE1BQU0sQ0FBQztBQUNyQixjQUFJLENBQUMsT0FBTyxHQUFHLE9BQU8sQ0FBQztBQUN2QixjQUFJLENBQUMsV0FBVyxHQUFHLFdBQVcsQ0FBQztBQUMvQixjQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztBQUNqQixjQUFJLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxVQUFBLE1BQU0sRUFBSTtBQUM5QixrQkFBTSxDQUFDLEtBQUssR0FBRyxTQUFTLENBQUM7QUFDekIsa0JBQU0sQ0FBQyxHQUFHLENBQUMsQ0FDVCxFQUFFLEtBQUssRUFBRSxDQUFDLEVBQUUsRUFBQyxNQUFNLENBQUMsRUFBTyxRQUFRLEVBQUUsUUFBUSxFQUFTLEdBQUcsRUFBRSxJQUFJLEVBQUUsS0FBSyxFQUFDLE1BQU0sRUFBRSxFQUMvRSxFQUFFLEtBQUssRUFBRSxTQUFTLEVBQVMsUUFBUSxFQUFFLE9BQU8sRUFBRyxHQUFHLEVBQUUsSUFBSSxFQUFFLEVBQzFELEVBQUUsS0FBSyxFQUFFLGdCQUFnQixFQUFFLFFBQVEsRUFBRSxjQUFjLEVBQUcsR0FBRyxFQUFFLElBQUksRUFBRSxFQUNqRSxFQUFFLEtBQUssRUFBRSxXQUFXLEVBQU8sUUFBUSxFQUFFLFNBQVMsRUFBUSxHQUFHLEVBQUUsS0FBSyxFQUFFLEVBQ2xFLEVBQUUsS0FBSyxFQUFFLFlBQVksRUFBTSxRQUFRLEVBQUUsVUFBVSxFQUFPLEdBQUcsRUFBRSxLQUFLLEVBQUUsQ0FDbkUsQ0FBQyxDQUFDO1dBQ0osQ0FBQyxDQUFDO1NBQ0o7O3FCQWpCVSxHQUFHO0FBbUJkLGtCQUFRO21CQUFBLG9CQUFFO0FBQ1IscUJBQU8sSUFBSSxDQUFDLFdBQVcsQ0FBQyxTQUFTLEVBQUUsQ0FBQzthQUNyQzs7O0FBcEJNLGdCQUFNO21CQUFBLGtCQUFHO0FBQUUscUJBQU8sQ0FBQyxNQUFNLEVBQUUsT0FBTyxFQUFFLFVBQVUsRUFBRSxXQUFXLENBQUMsQ0FBQzthQUFFOzs7O2VBRDNELEdBQUciLCJmaWxlIjoiYXBwLmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=

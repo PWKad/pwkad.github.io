@@ -1,11 +1,13 @@
-System.register(["./services/registry", "./services/session"], function (_export) {
-  var RegistryList, Session, _createClass, _classCallCheck, Class;
+System.register(["./services/registry", "./services/session", "./services/datacontext"], function (_export) {
+  var RegistryList, Session, DataContext, _createClass, _classCallCheck, Class;
 
   return {
     setters: [function (_servicesRegistry) {
       RegistryList = _servicesRegistry.RegistryList;
     }, function (_servicesSession) {
       Session = _servicesSession.Session;
+    }, function (_servicesDatacontext) {
+      DataContext = _servicesDatacontext.DataContext;
     }],
     execute: function () {
       "use strict";
@@ -15,30 +17,30 @@ System.register(["./services/registry", "./services/session"], function (_export
       _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
       Class = _export("Class", (function () {
-        function Class(regList, session) {
+        function Class(regList, session, datacontext) {
           _classCallCheck(this, Class);
 
           this.registry = regList;
           this.session = session;
+          this.datacontext = datacontext;
         }
 
         _createClass(Class, {
+          toggleVisible: {
+            value: function toggleVisible(value) {
+              value.visible = !value.visible;
+            }
+          },
           activate: {
-            value: function activate(objName) {
+            value: function activate(classId) {
               var self = this;
-              var result = self.registry.registries.filter(function (reglist) {
-                return reglist.name === objName.id;
-              });
-              self.classItem = result[0];
-              self.classItem = self.session.api.classes.filter(function (obj) {
-                return obj.name === self.classItem.name;
-              })[0];
+              self.classItem = this.datacontext.getEntityById("Class", classId.id, false);
             }
           }
         }, {
           inject: {
             value: function inject() {
-              return [RegistryList, Session];
+              return [RegistryList, Session, DataContext];
             }
           }
         });
@@ -48,4 +50,4 @@ System.register(["./services/registry", "./services/session"], function (_export
     }
   };
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNsYXNzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7TUFBUSxZQUFZLEVBQ1osT0FBTyxpQ0FFRixLQUFLOzs7O0FBSFYsa0JBQVkscUJBQVosWUFBWTs7QUFDWixhQUFPLG9CQUFQLE9BQU87Ozs7Ozs7OztBQUVGLFdBQUs7QUFFTCxpQkFGQSxLQUFLLENBRUosT0FBTyxFQUFFLE9BQU8sRUFBRTtnQ0FGbkIsS0FBSzs7QUFHZCxjQUFJLENBQUMsUUFBUSxHQUFHLE9BQU8sQ0FBQztBQUN4QixjQUFJLENBQUMsT0FBTyxHQUFHLE9BQU8sQ0FBQztTQUN4Qjs7cUJBTFUsS0FBSztBQU9oQixrQkFBUTttQkFBQSxrQkFBQyxPQUFPLEVBQUU7QUFDaEIsa0JBQUksSUFBSSxHQUFHLElBQUksQ0FBQztBQUNoQixrQkFBSSxNQUFNLEdBQUcsSUFBSSxDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsTUFBTSxDQUFDLFVBQVUsT0FBTyxFQUFDO0FBQzdELHVCQUFPLE9BQU8sQ0FBQyxJQUFJLEtBQUssT0FBTyxDQUFDLEVBQUUsQ0FBQztlQUNwQyxDQUFDLENBQUM7QUFDSCxrQkFBSSxDQUFDLFNBQVMsR0FBRyxNQUFNLENBQUMsQ0FBQyxDQUFDLENBQUM7QUFDM0Isa0JBQUksQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxVQUFVLEdBQUcsRUFBRTtBQUM5RCx1QkFBTyxHQUFHLENBQUMsSUFBSSxLQUFLLElBQUksQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDO2VBQ3pDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQzthQUNQOzs7QUFmTSxnQkFBTTttQkFBQSxrQkFBRztBQUFFLHFCQUFPLENBQUMsWUFBWSxFQUFFLE9BQU8sQ0FBQyxDQUFDO2FBQUU7Ozs7ZUFEeEMsS0FBSyIsImZpbGUiOiJjbGFzcy5qcyIsInNvdXJjZVJvb3QiOiIvc3JjLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNsYXNzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7TUFBUSxZQUFZLEVBQ1osT0FBTyxFQUNQLFdBQVcsaUNBRU4sS0FBSzs7OztBQUpWLGtCQUFZLHFCQUFaLFlBQVk7O0FBQ1osYUFBTyxvQkFBUCxPQUFPOztBQUNQLGlCQUFXLHdCQUFYLFdBQVc7Ozs7Ozs7OztBQUVOLFdBQUs7QUFFTCxpQkFGQSxLQUFLLENBRUosT0FBTyxFQUFFLE9BQU8sRUFBRSxXQUFXLEVBQUU7Z0NBRmhDLEtBQUs7O0FBR2QsY0FBSSxDQUFDLFFBQVEsR0FBRyxPQUFPLENBQUM7QUFDeEIsY0FBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUM7QUFDdkIsY0FBSSxDQUFDLFdBQVcsR0FBRyxXQUFXLENBQUM7U0FDaEM7O3FCQU5VLEtBQUs7QUFPaEIsdUJBQWE7bUJBQUEsdUJBQUMsS0FBSyxFQUFDO0FBQ2xCLG1CQUFLLENBQUMsT0FBTyxHQUFHLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQzthQUNoQzs7QUFFRCxrQkFBUTttQkFBQSxrQkFBQyxPQUFPLEVBQUU7QUFDaEIsa0JBQUksSUFBSSxHQUFHLElBQUksQ0FBQztBQUNoQixrQkFBSSxDQUFDLFNBQVMsR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLGFBQWEsQ0FBQyxPQUFPLEVBQUUsT0FBTyxDQUFDLEVBQUUsRUFBRSxLQUFLLENBQUMsQ0FBQzthQUM3RTs7O0FBYk0sZ0JBQU07bUJBQUEsa0JBQUc7QUFBRSxxQkFBTyxDQUFDLFlBQVksRUFBRSxPQUFPLEVBQUUsV0FBVyxDQUFDLENBQUM7YUFBRTs7OztlQURyRCxLQUFLIiwiZmlsZSI6ImNsYXNzLmpzIiwic291cmNlUm9vdCI6Ii9zcmMvIn0=
