@@ -5,11 +5,42 @@
     <div class="row">
       <div class="col-xs-3">
         <div class="row">
-          <h3>Choose Version</h3>
-          <select selected-item.bind="selectedRepository">
+          <h3>Choose Repository</h3>
+          <select value.bind="selectedRepository">
             <option>Select A Repository</option>
-            <option repeat.for="repository of repositories" value.bind="repository.id" model.bind="repository">${repository.name}</option>
+            <option repeat.for="repository of repositories" model.bind="repository">${repository.name}</option>
           </select>
+        </div>
+        <div class="row">
+          <h3>Choose Version</h3>
+          <select value.bind="selectedVersion" disabled.bind="!selectedRepository.name">
+            <option>Select A Version</option>
+            <option repeat.for="version of selectedRepository.releases" model.bind="version" model.bind="version">${version.name}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-9">
+        <h3>Repository Info</h3>
+        <div class="list-group" with.bind="selectedRepository">
+          <a class="list-group-item">
+            <span class="badge">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              ${stars}
+            </span>
+            <strong>${name}</strong>
+            <p><small>${description}<br/><span class="text-muted">Last Updated:  ${lastUpdated}</span></small></p>
+          </a>
+        </div>
+        <h3>Version Info</h3>
+        <div class="list-group" with.bind="selectedVersion">
+          <a class="list-group-item">
+            <span class="badge">
+              ${name}
+            </span>
+            <markdown value.bind="body">
+            </markdown>
+            <p><small>${draft}<br/><span class="text-muted">Published:  ${published}</span></small></p>
+          </a>
         </div>
       </div>
     </div>

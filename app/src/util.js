@@ -17,3 +17,11 @@ export function titleToSlug(text) {
     .replace(/[^\w ]+/g,'')
     .replace(/ +/g,'-');
 }
+export function toIndex(items, key) {
+  var index = {}, i, ii, item;
+  for (i = 0, ii = items.length; i < ii; i++) {
+    item = items[i];
+    index[key(item)] = item;
+  }
+  return index;
+}

@@ -1,5 +1,6 @@
 import {Session} from './services/session';
 import {DataContext} from './services/datacontext';
+import {getTags, getRepositories} from './services/github';
 
 export class Docs{
   static inject() { return [Session, DataContext]; }
@@ -13,11 +14,13 @@ export class Docs{
   }
   activate(){
     var self = this;
-    this.datacontext.getEntityList('Repository', false, 'local').then(results => {
-      results.forEach(repo => {
-        self.repositories.push(repo);
+    return getRepositories()
+      .then(repos => {
+        repos.forEach(repo => {
+          getTags(repo);
+          self.repositories.push(repo);
+        });
       });
-    });
   }
   setRepository(repo){
     this.getVersions(repo);

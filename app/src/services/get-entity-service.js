@@ -10,7 +10,6 @@ class GetEntityService {
     if (!forceRemote) {
       var results = this.getLocalList(manager, endpoint, entityType, parentPropertyName, parentPropertyId);
       if (results.length > 0) {
-        console.log(results);
         return Promise.resolve(results);
       }
     }

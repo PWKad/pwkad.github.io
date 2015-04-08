@@ -14,11 +14,13 @@ System.config({
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.5.1",
     "aurelia-framework": "github:aurelia/framework@0.9.0",
     "aurelia-http-client": "github:aurelia/http-client@0.6.1",
+    "aurelia-path": "github:aurelia/path@0.4.6",
     "aurelia-router": "github:aurelia/router@0.6.0",
     "bootstrap": "github:twbs/bootstrap@3.3.2",
     "breeze": "npm:breeze-client@1.5.4",
     "commonmark": "npm:commonmark@0.18.1",
     "font-awesome": "npm:font-awesome@4.3.0",
+    "moment": "github:moment/moment@2.10.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
     "github:aurelia/binding@0.4.1": {

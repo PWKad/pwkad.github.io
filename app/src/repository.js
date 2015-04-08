@@ -43,7 +43,6 @@ export class Docs{
   }
 
   activate(repoId){
-    console.log(repoId);
     this.filterRegistries('');
   }
 

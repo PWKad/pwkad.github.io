@@ -1,0 +1,114 @@
+[
+  {
+    "name": "metadata",
+    "fullName": "aurelia/metadata"
+  },
+  {
+    "name": "dependency-injection",
+    "fullName": "aurelia/dependency-injection"
+  },
+  {
+    "name": "binding",
+    "fullName": "aurelia/binding"
+  },
+  {
+    "name": "task-queue",
+    "fullName": "aurelia/task-queue"
+  },
+  {
+    "name": "event-aggregator",
+    "fullName": "aurelia/event-aggregator"
+  },
+  {
+    "name": "history",
+    "fullName": "aurelia/history"
+  },
+  {
+    "name": "history-browser",
+    "fullName": "aurelia/history-browser"
+  },
+  {
+    "name": "path",
+    "fullName": "aurelia/path"
+  },
+  {
+    "name": "http-client",
+    "fullName": "aurelia/http-client"
+  },
+  {
+    "name": "logging",
+    "fullName": "aurelia/logging"
+  },
+  {
+    "name": "logging-console",
+    "fullName": "aurelia/logging-console"
+  },
+  {
+    "name": "router",
+    "fullName": "aurelia/router"
+  },
+  {
+    "name": "route-recognizer",
+    "fullName": "aurelia/route-recognizer"
+  },
+  {
+    "name": "loader",
+    "fullName": "aurelia/loader"
+  },
+  {
+    "name": "loader-default",
+    "fullName": "aurelia/loader-default"
+  },
+  {
+    "name": "templating",
+    "fullName": "aurelia/templating"
+  },
+  {
+    "name": "templating-binding",
+    "fullName": "aurelia/templating-binding"
+  },
+  {
+    "name": "html-template-element",
+    "fullName": "aurelia/html-template-element"
+  },
+  {
+    "name": "templating-resources",
+    "fullName": "aurelia/templating-resources"
+  },
+  {
+    "name": "templating-router",
+    "fullName": "aurelia/templating-router"
+  },
+  {
+    "name": "framework",
+    "fullName": "aurelia/framework"
+  },
+  {
+    "name": "bootstrapper",
+    "fullName": "aurelia/bootstrapper"
+  },
+  {
+    "name": "skeleton-navigation",
+    "fullName": "aurelia/skeleton-navigation"
+  },
+  {
+    "name": "app-documentation",
+    "fullName": "aurelia/app-documentation"
+  },
+  {
+    "name": "tools",
+    "fullName": "aurelia/tools"
+  },
+  {
+    "name": "app-contacts",
+    "fullName": "aurelia/app-contacts"
+  },
+  {
+    "name": "documentation",
+    "fullName": "aurelia/documentation"
+  },
+  {
+    "name": "benchmarks",
+    "fullName": "aurelia/benchmarks"
+  }
+]
