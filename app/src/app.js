@@ -14,8 +14,8 @@ export class App {
       config.title = 'Aurelia';
       config.map([
         { route: ['','docs'],      moduleId: './docs',        nav: true, title:'Docs' },
-        { route: 'API/:id',        moduleId: './api',  nav: true },
-        { route: 'Repository/:id', moduleId: './repository',  nav: true },
+        { route: 'API',            moduleId: './api',         nav: true },
+        { route: 'Repository/:id', moduleId: './repository',  nav: false },
         { route: 'Class/:id',      moduleId: './class',       nav: false },
         { route: 'Method/:id',     moduleId: './method',      nav: false }
       ]);

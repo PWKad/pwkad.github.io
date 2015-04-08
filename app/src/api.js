@@ -11,6 +11,7 @@ export class Docs{
     this.datacontext = datacontext;
     this.repositories = [];
     this.versions = [];
+    this.session = session;
   }
   activate(){
     var self = this;
@@ -19,7 +20,16 @@ export class Docs{
         repos.forEach(repo => {
           getTags(repo);
           self.repositories.push(repo);
+          self.session.repositories.push(repo);
         });
+        var firstRepo = self.session.repositories.filter(function(repo) {
+          return repo.name === 'dependency-injection';
+        });
+        self.session.currentRepository = firstRepo[0];
+        var firstVersion = firstRepo[0].releases.filter(function(rel) {
+          return rel.tagName === '0.5.0';
+        });
+        self.session.currentVersion = firstVersion[0];
       });
   }
   setRepository(repo){

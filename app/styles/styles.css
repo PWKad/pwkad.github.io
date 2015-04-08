@@ -48,3 +48,24 @@ section {
 .toggle {
     cursor: pointer;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+
+.breadcrumb-nav {
+    margin: 5px !important;
+    padding: 10px !important;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}

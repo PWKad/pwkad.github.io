@@ -3,25 +3,9 @@
 
   <section class="container-fluid">
     <div class="row">
-      <div class="col-xs-3">
-        <div class="row">
-          <h3>Choose Repository</h3>
-          <select value.bind="selectedRepository">
-            <option>Select A Repository</option>
-            <option repeat.for="repository of repositories" model.bind="repository">${repository.name}</option>
-          </select>
-        </div>
-        <div class="row">
-          <h3>Choose Version</h3>
-          <select value.bind="selectedVersion" disabled.bind="!selectedRepository.name">
-            <option>Select A Version</option>
-            <option repeat.for="version of selectedRepository.releases" model.bind="version" model.bind="version">${version.name}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-xs-9">
+      <div class="col-xs-12">
         <h3>Repository Info</h3>
-        <div class="list-group" with.bind="selectedRepository">
+        <div class="list-group" with.bind="session.currentRepository">
           <a class="list-group-item">
             <span class="badge">
               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
@@ -32,10 +16,10 @@
           </a>
         </div>
         <h3>Version Info</h3>
-        <div class="list-group" with.bind="selectedVersion">
+        <div class="list-group" with.bind="session.currentVersion">
           <a class="list-group-item">
             <span class="badge">
-              ${name}
+              ${tagName}
             </span>
             <markdown value.bind="body">
             </markdown>

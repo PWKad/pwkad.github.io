@@ -18,11 +18,27 @@
         <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
           <a href.bind="row.href">${row.title}</a>
         </li>
+        <ul class="breadcrumb breadcrumb-nav list-inline pull-left">
+          <li><a href="#Repository/${session.currentRepository.name}">${session.currentRepository.name}</a></li>
+        </ul>
       </ul>
-
       <ul class="nav navbar-nav navbar-right">
         <li class="loader" if.bind="router.isNavigating">
           <i class="fa fa-spinner fa-spin fa-2x"></i>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${session.currentRepository.name} <span class="caret"></span></a>
+          <ul class="dropdown-menu scrollable-menu" role="menu">
+            <li repeat.for="repository of session.repositories" class="${$parent.session.currentRepository === repository ? 'active' : ''}"><a href="#" click.delegate="$parent.setActiveRepository(repository)">${repository.name}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" disabled.bind="!session.currentRepository.name">${session.currentVersion.tagName} <span class="caret"></span></a>
+          <ul class="dropdown-menu scrollable-menu" role="menu">
+            <li repeat.for="release of session.currentRepository.releases" class="${$parent.session.currentVersion === release ? 'active' : ''}">
+              <a href="#" click.delegate="$parent.setActiveRelease(release)">${release.tagName}</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

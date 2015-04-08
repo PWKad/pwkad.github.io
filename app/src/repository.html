@@ -5,11 +5,13 @@
     <div class="row">
       <div class="col-xs-3">
         <div class="row">
-          <h3>API Search</h3>
-          <input value.bind="searchText" class="col-xs-12 ${ searchChanges ? 'border-red' : '' }" placeholder="search..." />
+          <div class="col-xs-12">
+            <h3>API Search</h3>
+            <input value.bind="searchText" class="col-xs-12 ${ searchChanges ? 'border-red' : '' }" placeholder="search..." />
+          </div>
         </div>
         <div class="row">
-          <a class="col-xs-12 toggle" repeat.for="registry of computedRegistries" href.bind="$parent.getRegistryHref(registry)">
+          <a class="col-xs-12 toggle ellipsis" repeat.for="registry of computedRegistries" href.bind="$parent.getRegistryHref(registry)">
             ${registry.searchName()}
           </a>
           <div class="col-xs-12" show.bind="computedRegistries.length === 0">
